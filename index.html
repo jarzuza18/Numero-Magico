@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numero Magico</title>
+</head>
+
+<body>
+    <h1>Juego del número mágico</h1>
+    <p>
+        Adivina el número que esta escondido entre el 1 y el 1000,
+        pero recuerda solo tienes 10 intentos para hacerlo, si lo logras
+        te ganas una ida a la tienda para que compres lo que tu quieras con
+        tu dinero pero si no lo logras no te preocupes tampoco te lo iba a poner
+        tan facil.
+        <br><br>
+        En cada intento fallido te obsequire una pista de consolocion
+        y en ella te dire si estas por encima o por debajo del numero para
+        ayudarte a acercarte a el. exitos!!
+    </p>
+
+        <label for="num">Intenta adivinar el numero magico, ingresa un numero: </label>
+        <input type="text" name="num" id="num">
+        <input type="submit" value="Enviar" id="submit">
+        <br><br>
+
+    <script>
+        var nombre = prompt('¡Bienvenido al juego del número mágico!, ¿Cuál es tu nombre?');
+        var min = 1;
+        var max = 1000;
+        var num_mag = Math.floor(Math.random() * max - min + 1 ) + min;
+        console.log(num_mag);
+        var mensaje = nombre+ ", adivina el numero del 1 al 1000";
+        var intentos = 1;
+        
+        while (intentos < 11) {
+            var num_ingresado = prompt(mensaje);
+            num_ingresado = parseInt(num_ingresado);
+        if(num_ingresado >= min && num_ingresado <= max){
+            if (num_mag === num_ingresado) {
+                alert("ganaste!!");
+                document.write(intentos+") El numero magico es "+num_mag+" felicidades<br>");
+                mensaje = intentos+") El numero magico es "+num_mag+" felicidades";
+                console.log("ganaste");
+                break;
+            } else if (num_ingresado > num_mag) {
+                document.write(intentos+") El numero "+num_ingresado+" es mayor al numero buscado<br>");
+                mensaje = intentos+") El numero "+num_ingresado+" es mayor al numero buscado";
+            } else if (num_ingresado < num_mag) {
+                document.write(intentos+") El numero "+num_ingresado+" es menor al numero buscado<br>");
+                mensaje = intentos+") El numero "+num_ingresado+" es menor al numero buscado";
+            }
+            intentos++;
+            if(intentos > 10){
+                document.write("Lo sentimos, "+nombre+" pero el numero magico era: "+num_mag+" suerte para la proxima");
+                mensaje = "Lo siento el numero magico es "+num_mag+", suerte para la proxima";
+        }
+        }
+        else{
+            alert('Debe ingresar un numero entre '+min+' y '+max);
+        }
+            
+    }
+        
+    </script>
+</body>
+
+</html>
